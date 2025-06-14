@@ -14,7 +14,7 @@ export default function About() {
   return (
     <div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-10 my-10">
-        {images.map((image, index) => (
+        {/* {images.map((image, index) => (
           <motion.div
             key={image}
             initial={{
@@ -37,7 +37,7 @@ export default function About() {
               className="rounded-md object-cover transform rotate-3 shadow-xl block w-full h-40 md:h-60 hover:rotate-0 transition duration-200"
             />
           </motion.div>
-        ))}
+        ))} */}
         {/* 
         // <Image
         //   src="https://images.unsplash.com/photo-1692544350322-ac70cfd63614?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60"
@@ -70,8 +70,8 @@ export default function About() {
       </div>
 
       <div className="max-w-4xl">
-        <Paragraph className=" mt-4">
-          Hey there, I&apos;m John Doe - a passionate developer, avid writer,
+        {/* <Paragraph className=" mt-4">
+          Hey there, I&apos;m Butra Balaprasad - a passionate developer, avid writer,
           and a connoisseur of awesome design. Welcome to my corner of the
           digital world!
         </Paragraph>
@@ -112,7 +112,38 @@ export default function About() {
         <Paragraph className=" mt-4">
           Thank you for being here, and I can&apos;t wait to embark on this
           adventure with you.
-        </Paragraph>
+        </Paragraph> */}
+
+
+<Paragraph className="mt-4">
+  Hey there, I&apos;m Balaprasad &mdash; a passionate software engineer, startup co-founder, and full-stack product builder who thrives on turning bold ideas into robust, scalable, and high-impact software systems.
+</Paragraph>
+
+<Paragraph className="mt-4">
+  With 4+ years of hands-on experience, I&apos;ve architected and delivered end-to-end solutions across frontend, backend, DevOps, and cloud infrastructure. I&apos;ve built real-world products entirely from scratch, owning everything from database design and API architecture to production deployments and performance optimization.
+</Paragraph>
+
+<Paragraph className="mt-4">
+  My core stack includes Java, Spring Boot, Node.js, React Native, MySQL, and Redis &mdash; backed by strong command over system design, multithreading, and distributed computing. I don&apos;t just build applications &mdash; I engineer systems that scale seamlessly and perform under load.
+</Paragraph>
+
+<Paragraph className="mt-4">
+  I&apos;m also building advanced AI-driven systems, including a real-time physiotherapy assistant powered by WebRTC, MediaPipe, and pose detection models. It merges my deep understanding of AI pipelines with real-time video processing, offering users responsive and intelligent guidance.
+</Paragraph>
+
+<Paragraph className="mt-4">
+  I believe in writing clean, maintainable, and testable code, and I approach software as a craft &mdash; one that requires discipline, creativity, and continuous learning. Whether it&apos;s designing microservices, optimizing backend throughput, or creating intuitive mobile experiences, I bring a strong sense of ownership and execution.
+</Paragraph>
+
+<Paragraph className="mt-4">
+  If you&apos;re looking for someone who builds with clarity, scales with confidence, and executes with precision &mdash; you&apos;re in the right place.
+</Paragraph>
+
+<Paragraph className="mt-4">
+  Welcome to my digital world &mdash; where engineering meets purpose.
+</Paragraph>
+
+
       </div>
     </div>
   );

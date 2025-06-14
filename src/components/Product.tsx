@@ -12,7 +12,7 @@ export const SingleProduct = ({ product }: { product: Product }) => {
     product.thumbnail
   );
   return (
-    <div className="py-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <motion.div
         initial={{
           opacity: 0,
@@ -26,76 +26,99 @@ export const SingleProduct = ({ product }: { product: Product }) => {
           duration: 0.5,
         }}
         key={product.slug}
-        className="relative"
+        className="relative flex justify-center items-center"
       >
         <Image
           src={activeImage}
           alt="thumbnail"
-          height="1000"
-          width="1000"
-          className="rounded-md object-contain"
+          height="700"
+          width="700"
+          className="rounded-2xl object-contain shadow-2xl"
+          priority
         />
-        <div className="absolute bottom-0 bg-white h-40 w-full [mask-image:linear-gradient(to_bottom,transparent,white)]" />
+        <div className="absolute bottom-0 bg-gradient-to-t from-white to-transparent h-40 w-full" />
       </motion.div>
-      <div className="flex flex-row justify-center my-8 flex-wrap">
-        {product.images.map((image, idx) => (
-          <button
+      <div className="flex flex-row justify-center gap-4 my-12 flex-wrap">
+        {product.images && product.images.length > 0 && product.images.map((image, idx) => (
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setActiveImage(image)}
             key={`image-thumbnail-${idx}`}
+            className={`relative rounded-xl overflow-hidden transition-all duration-200 ${
+              activeImage === image ? 'ring-2 ring-blue-500' : ''
+            }`}
           >
             <Image
               src={image}
               alt="product thumbnail"
               height="1000"
               width="1000"
-              className="h-14 w-16 md:h-40 md:w-60 object-cover object-top mr-4 mb-r border rounded-lg border-neutral-100"
+              className="h-16 w-20 md:h-44 md:w-64 object-cover object-center hover:opacity-80 transition-opacity"
             />
-          </button>
+          </motion.button>
         ))}
       </div>
-      <div className="flex lg:flex-row justify-between items-center flex-col mt-20">
-        <Heading className="font-black mb-2 pb-1"> {product.title}</Heading>
-        <div className="flex space-x-2 md:mb-1 mt-2 md:mt-0">
-          {product.stack?.map((stack: string) => (
+      <div className="flex flex-col items-center space-y-6 mt-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <Heading className="text-4xl md:text-5xl font-black text-center bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
+            {product.title}
+          </Heading>
+        </motion.div>
+        <div className="flex flex-wrap gap-2 justify-center">
+          {product.stack && product.stack.length > 0 && product.stack.map((stack: string) => (
             <span
               key={stack}
-              className="text-xs  md:text-xs lg:text-xs bg-gray-50 px-2 py-1 rounded-sm text-secondary"
+              className="px-4 py-2 text-sm font-medium bg-gray-200 text-gray-700 rounded-full border border-gray-200 hover:bg-gray-100 transition-colors duration-200 shadow-sm hover:shadow"
             >
               {stack}
             </span>
           ))}
         </div>
       </div>
-      <div>
-        <Paragraph className="max-w-xl mt-4">{product.description}</Paragraph>
+      <div className="mt-12">
+        <Paragraph className="text-lg text-center max-w-3xl mx-auto text-gray-600">
+          {product.description}
+        </Paragraph>
       </div>
-      <div className="prose prose-sm md:prose-base max-w-none text-neutral-600">
+      <div className="prose prose-lg max-w-4xl mx-auto mt-16 text-gray-700">
         {product?.content}
       </div>
 
-      <a
-        href={product.href}
-        target="__blank"
-        className="inline-flex items-center gap-1 group/button rounded-full hover:scale-105 focus:outline-none transition ring-offset-gray-900 bg-gray-800 text-white shadow-lg shadow-black/20 sm:backdrop-blur-sm group-hover/button:bg-gray-50/15 group-hover/button:scale-105 focus-visible:ring-1 focus-visible:ring-offset-2 ring-gray-50/60 text-sm font-medium px-4 py-2 mt-auto origin-left"
-      >
-        Live Preview
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
-        >
-          <path d="M5 12l14 0"></path>
-          <path d="M13 18l6 -6"></path>
-          <path d="M13 6l6 6"></path>
-        </svg>
-      </a>
+      {product.href !== "#" && (
+        <div className="flex justify-center mt-16">
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href={product.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-gray-900 to-gray-700 rounded-full hover:from-gray-800 hover:to-gray-600 transition-all duration-200 shadow-lg hover:shadow-xl"
+          >
+            Live Preview
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="transition-transform group-hover:translate-x-1"
+            >
+              <path d="M5 12h14" />
+              <path d="M13 18l6-6" />
+              <path d="M13 6l6 6" />
+            </svg>
+          </motion.a>
+        </div>
+      )}
     </div>
   );
 };

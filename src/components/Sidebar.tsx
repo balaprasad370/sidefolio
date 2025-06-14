@@ -12,6 +12,7 @@ import { Badge } from "./Badge";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
 import { isMobile } from "@/lib/utils";
+import balaAvatar from "public/images/balaavatar.png";
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(isMobile() ? false : true);
@@ -20,7 +21,7 @@ export const Sidebar = () => {
     <>
       <AnimatePresence>
         {open && (
-          <motion.div
+          <motion.div 
             initial={{ x: -200 }}
             animate={{ x: 0 }}
             transition={{ duration: 0.2, ease: "linear" }}
@@ -85,6 +86,7 @@ export const Navigation = ({
         <Link
           key={link.href}
           href={link.href}
+          target="_blank"
           className={twMerge(
             "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm"
           )}
@@ -106,15 +108,15 @@ const SidebarHeader = () => {
   return (
     <div className="flex space-x-2">
       <Image
-        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80"
+        src={balaAvatar}
         alt="Avatar"
         height="40"
         width="40"
-        className="object-cover object-top rounded-full flex-shrink-0"
+        className="object-cover object-top rounded-full flex-shrink-0 w-10 h-10"
       />
       <div className="flex text-sm flex-col">
-        <p className="font-bold text-primary">John Doe</p>
-        <p className="font-light text-secondary">Developer</p>
+        <p className="font-bold text-primary">Butra Balaprasad</p>
+        <p className="font-light text-secondary">Software Engineer</p>
       </div>
     </div>
   );

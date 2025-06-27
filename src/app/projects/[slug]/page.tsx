@@ -37,7 +37,7 @@ export default function SingleProjectPage({
   params: { slug: string };
 }) {
   const slug = params.slug;
-  const product = products.find((p) => p.slug === slug);
+  const product = products.find((p) => p.slug === slug) as Product;
 
   if (!product) {
     redirect("/projects");

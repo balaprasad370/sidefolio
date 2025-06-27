@@ -29,7 +29,7 @@ export const TechStack = () => {
       </Heading>
       <div className="flex flex-wrap gap-4">
         {techStackIcons.map((name) => (
-          <div style={{ width: 40, height: 40 }}>
+          <div key={name} style={{ width: 40, height: 40 }}>
             <StackIcon key={name} name={name} />
           </div>
         ))}

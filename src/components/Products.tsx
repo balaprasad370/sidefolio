@@ -13,7 +13,7 @@ export const Products = () => {
     <div>
       <div className="grid grid-cols-1  gap-10">
         {products.length > 0 &&
-          products.map((product: Product, idx: number) => (
+          products.map((product, idx) => (
             <motion.div
               key={product.href}
               initial={{
